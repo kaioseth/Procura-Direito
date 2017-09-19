@@ -24,9 +24,19 @@
 						<input type="password" class="form-control" placeholder="senha" aria-describedby="basic-addon2">
 					</div>
 					<input type="button" class="btn" style="margin-top: 3%; width: 100%" value="Entrar">
-					<div align="right" style="margin-top: 3%;">
-						<a href=""><span>Não possuo cadastro</span></a><!-- enviar para pagina de cadastro -->
-					</div>
+					<div class="col-md-12" style="margin-top: 3%;">
+						<div class="col-md-6" align="left">
+							<a>
+								<img src="<?php echo $path_midia ?>fb_logo.png" width="30">
+							</a>
+							<a>
+								<img src="<?php echo $path_midia ?>g_logo.png" width="30">
+							</a>
+						</div>
+						<div class="col-md-6" align="right" style="margin-top: 5px">
+							<a href=""><span>Não possuo cadastro</span></a><!-- enviar para pagina de cadastro -->
+						</div>
+					</div>					
 				</div>
 				<div class="col-md-4"></div>
 			</div>					

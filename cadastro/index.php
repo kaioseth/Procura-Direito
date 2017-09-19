@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12" style="height: 100%">
-					<div class="col-md-6">
+					<div class="col-md-6" style="margin-left: 25%">
 						<div class="col-md-12" align="center" style="margin-top: 5%;">
 							<img src="<?php echo $path_midia ?>logo.png" width="300">
 						</div>
@@ -37,7 +37,7 @@
 						</form>
 					</div>
 
-					<div class="col-md-6">
+					<!--<div class="col-md-6">
 						<div style="margin-top: 10%; margin-left: 5%;">
 							<div class="row" style="margin-left: 1%; margin-top: 25%;">
 								<div class="col-md-12">
@@ -58,7 +58,7 @@
 								</div>	
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>
