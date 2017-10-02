@@ -7,10 +7,10 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
-	<body style="overflow: hidden;">
+	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12" style="height: 60px;">
+				<div class="col-md-12 shadow_bottom" style="height: 60px;">
 					<div class="col-md-6">
 						<h3 style="margin-top: 18px;">Procura Direito</h3>
 					</div>
@@ -18,15 +18,15 @@
 						<div style="margin-top: 23px"><h4>Fulano da Silva</h4></div>
 					</div>
 				</div>
-				<div class="col-md-12" align="center">
-					<h3 style="height: 60px;">Solicitações de complemento</h3>
+				<div class="col-md-12 shadow_bottom" align="center" style="min-height: 70px;">
+					<h2>Solicitações de complemento</h2>
 				</div>
 			</div>
-			<div class="row" style="height: 100%">
+			<div class="row" style="margin-top: 2%;">
 <?php
-				for( $i = 0; $i < 3; $i++ ){ 
+				for( $i = 1; $i < 11; $i++ ){ 
 ?>
-						<div class="col-md-12" style="margin-bottom: 1%;">
+						<div class="col-md-12" style="margin-bottom: 1%; border-bottom: 1px dotted #c6d0d2; ">
 							<div class="col-md-6">
 								<a><span style="font-size: 16px;">Título do material <?php echo $i; ?></span></a>
 							</div>

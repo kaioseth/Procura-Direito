@@ -10,7 +10,7 @@
 	<body style="overflow: hidden;">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12" style="height: 60px;">
+				<div class="col-md-12 shadow_bottom" style="height: 60px;">
 					<div class="col-md-6">
 						<h3 style="margin-top: 18px;">Procura Direito</h3>
 					</div>
@@ -18,19 +18,22 @@
 						<div style="margin-top: 18px"><a>Minha Conta / Cadastrar</a></div>
 					</div>
 				</div>
-				<div class="col-md-12" align="center">
-					<h3 style="height: 60px;">Sugestão</h3>
+				<div class="col-md-12 shadow_bottom" align="center" style="min-height: 70px;">
+					<h2>Sugestões</h2>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12" style="height: 100%">
-					<div class="col-md-6"s style="margin-left: 25%;">
-						<form style="margin-top: 10%">
+				<div class="col-md-12">
+					<div class="col-md-8"s style="margin-left: 17%;">
+						<form style="margin-top: 8%">
 							<div class="form-group">
 								<input type="text" class="form-control" id="sugestao_nome" placeholder="Nome">
 							</div>
 							<div class="form-group">
 								<input type="email" class="form-control" id="sugestao_email" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<span>Por que cadastrar uma sugestão?</span>
 							</div>
 							<div class="form-group">
 								<input type="radio" name="sugestao_radio"> Não encontrei o que procurava
@@ -44,7 +47,7 @@
 							<div class="form-group">
 								<textarea class="form-control" placeholder="Qual conteúdo procurava?" style="min-height: 100px;"></textarea>
 							</div>
-							<div class="form-group" align="right">
+							<div class="form-group" align="right" style="margin-top: 3%; margin-bottom: 3%;">
 								<p>
 									<button type="button" class="btn btn-primary btn-sm">Enviar Sugestão</button>
 								</p>

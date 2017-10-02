@@ -7,12 +7,12 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
-	<body style="overflow: hidden;">
+	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12" style="height: 100%">
+				<div class="col-md-12">
 					<div class="col-md-6" style="margin-left: 25%">
-						<div class="col-md-12" align="center" style="margin-top: 5%;">
+						<div class="col-md-12" align="center" style="margin-top: 2%;">
 							<img src="<?php echo $path_midia ?>logo.png" width="300">
 						</div>
 						<form style="margin-top: 5%">
@@ -25,8 +25,15 @@
 							<div class="form-group">
 								<input type="email" class="form-control" id="email" placeholder="Email">
 							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" id="senha" placeholder="Senha">
+							<div style="width: 48%; float: left;">
+								<div class="form-group">
+									<input type="password" class="form-control" id="senha" placeholder="Senha">
+								</div>	
+							</div>
+							<div style="width: 48%; float: right;">
+								<div class="form-group">
+									<input type="password" class="form-control" id="confirm_pass" placeholder="Repita sua senha">
+								</div>
 							</div>
 							<div class="form-group">
 								<p>

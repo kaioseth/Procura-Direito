@@ -10,7 +10,7 @@
 	<body style="overflow: hidden;">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12" style="height: 60px;">
+				<div class="col-md-12 shadow_bottom" style="height: 60px;">
 					<div class="col-md-6">
 						<h3 style="margin-top: 18px;">Procura Direito</h3>
 					</div>
@@ -18,13 +18,13 @@
 						<div style="margin-top: 23px"><h4>Fulano da Silva</h4></div>
 					</div>
 				</div>
-				<div class="col-md-12" align="center">
-					<h3 style="height: 60px;">Cadastrar novo material</h3>
+				<div class="col-md-12 shadow_bottom" align="center" style="min-height: 70px;">
+					<h2>Cadastrar novo material</h2>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12" style="height: 100%">
-						<form>
+				<div class="col-md-12">
+						<form style="margin-top: 5%;">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="col-md-6">
@@ -82,7 +82,7 @@
 								</div>
 							</div>
 
-							<div class="form-group" align="right">
+							<div class="form-group" align="right" style="margin-top: 1%; margin-bottom: 1%;">
 								<p style="margin-right: 15px;"> <button type="button" class="btn btn-primary btn-sm">Cadastrar material</button> </p>
 							</div>
 						</form>

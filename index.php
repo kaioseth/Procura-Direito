@@ -28,7 +28,7 @@
 							<img src="<?php echo $path_midia ?>logo.png" width="300">
 						</div>
 					</div>
-					<div class="col-md-7" style="margin-top: 13%;">
+					<div class="col-md-7 " style="margin-top: 13%;">
 						<h1>Procura Direito</h1>
 						<form>
 							<div class="form-group">
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" align="right" style="margin-top: 10%; float: right; margin-right: 105px;">
+			<div class="row" align="right" style="margin-top: 10%; float: right; margin-right: 105px; margin-bottom: 1%;">
 				<div class="col-md-4">
 					<button class="btn btn-default" type="submit">Novo Material</button>
 				</div>

@@ -7,10 +7,10 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
-	<body style="overflow: hidden;">
+	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12" style="height: 60px;">
+				<div class="col-md-12 shadow_bottom" style="height: 60px;">
 					<div class="col-md-6">
 						<h3 style="margin-top: 18px;">Procura Direito</h3>
 					</div>
@@ -18,50 +18,30 @@
 						<div style="margin-top: 23px"><h4>Fulano da Silva</h4></div>
 					</div>
 				</div>
-				<div class="col-md-12">
-					<div class="col-md-6" align="left">
-						<h3 style="height: 60px;">Nome do material</h3>	
+				<div class="col-md-12 shadow_bottom" align="center" style="min-height: 70px;">
+					<div class="col-md-8" align="left">
+						<h2>Resultado busca: </h2>	
 					</div>
-					<div class="col-md-6" align="right" style="margin-top: 2%">
-						<a><span>Complementar material</span></a>	
+					<div class="col-md-4" align="right">
+						<img style="margin-top: 4%;" src="<?php echo $path_midia; ?>search.png" width="45">
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12" style="height: 100%">
-						<form>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" id="titulo" value="nome do material" disabled="disabled">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="col-md-3">
-											<span>icon download</span>
-										</div>
-										<div class="col-md-9" align="right">
-											<span style="text-align: right;">
-												Material postado por Funalo da Silva em 13/11/2000<br>
-												Material sofreu X alterações
-											</span>
-										</div>
-									</div>
-								</div>
+			<div class="row" style="margin-top: 2%;">
+<?php
+				for( $i = 1; $i < 11; $i++ ){ 
+?>
+						<div class="col-md-12" style="margin-bottom: 1%; border-bottom: 1px dotted #c6d0d2; ">
+							<div class="col-md-6">
+								<a><span style="font-size: 16px;">Título do material <?php echo $i; ?></span></a>
 							</div>
-
-							<div class="row">
-								<div class="col-md-12">
-									<div class="col-md-12">
-										<div class="form-group">
-											<textarea class="form-control" id="descricao" placeholder="Insira aqui o conteúdo" style="min-height: 350px;" disabled="disabled">Corpo do material</textarea>
-										</div>
-									</div>
-								</div>
+							<div class="col-md-6" align="right">
+								Postado por <a>Sicrano da Silva</a> em 13/11/1993
 							</div>
-						</form>
-				</div>
+						</div>
+<?php
+				}
+?>
 			</div>
 		</div>
 	</body>

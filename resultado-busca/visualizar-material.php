@@ -19,41 +19,50 @@
 					</div>
 				</div>
 				<div class="col-md-12 shadow_bottom" style="min-height: 70px;">
-					<div class="col-md-6">
-						<h3>Alterar material: <span style="color: #bbb;">Revisão de leis de desmatamento</span></h3>
+					<div class="col-md-6" align="left">
+						<h3>Nome do material</h3>	
 					</div>
-					<div class="col-md-6" align="right" style="margin-top:25px;">
-						<span>Material inserido por Sicrano da Silva</span>
+					<div class="col-md-6" align="right" style="margin-top: 2%">
+						<a><span>Complementar material</span></a>	
 					</div>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 1%;">
-				<div class="col-md-12"> <div class="col-md-12">
-					<div class="form-group">
-						<textarea style="min-height: 190px;" class="form-control" placeholder="Conteúdo atual do material" disabled="disabled"></textarea>
-					</div>
-				</div> </div>
-				<div class="col-md-12"> <div class="col-md-12">
-					<div class="form-group">
-						<textarea style="min-height: 190px;" class="form-control" placeholder="Conteúdo corrigido"></textarea>
-					</div>
-				</div> </div>
 				<div class="col-md-12">
-					<div class="col-md-6">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Por que está complementando este material?">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<input style="margin-left: 10%;" type="file" class="form-control" placeholder="Deseja inserir anexo?">
-						</div>
-					</div>
-					<div class="col-md-2" align="right">
-						<div class="form-group">
-						<button type="button" class="btn btn-primary btn-sm">Cadastrar alteração</button>
-						</div>
-					</div>
+						<form>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-7">
+										<div class="form-group">
+											<input type="text" class="form-control" id="titulo" value="nome do material" disabled="disabled">
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="col-md-1">
+											<a style="cursor: pointer;" title="Download anexo do material">
+												<img src="<?php echo $path_midia; ?>download_a3.png" width="30">
+											</a>
+										</div>
+										<div class="col-md-11" align="right">
+											<span style="text-align: right;">
+												Material postado por Funalo da Silva em 13/11/2000<br>
+												Material sofreu X alterações
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea class="form-control" id="descricao" placeholder="Insira aqui o conteúdo" style="min-height: 350px;" disabled="disabled">Corpo do material</textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
 				</div>
 			</div>
 		</div>
