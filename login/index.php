@@ -1,6 +1,6 @@
+<?php include_once("../paths.php"); ?>
 <html lang="pt-br">
 	<head>
-		<?php include_once("../paths.php"); ?>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,22 +8,21 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
 	<body>
-		<div class="container">
+		<div class="container col-md-12">
 			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<div class="col-md-12" align="center" style="margin-top: 10%;">
+				<div class="col-md-5 center-block" style="float: none;">
+					<div class="col-md-12" align="center" style="margin-top: 8%;">
 						<img src="<?php echo $path_midia ?>logo.png" width="300">
 					</div>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">E-mail</span>
-						<input type="email" class="form-control" placeholder="exemplo@email.com" aria-describedby="basic-addon1">
+						<span class="input-group-addon" id="basic-addon1" for="email">E-mail</span>
+						<input id="email" type="email" class="form-control" placeholder="exemplo@email.com" aria-describedby="basic-addon1">
 					</div>
 					<div class="input-group" style="margin-top: 3%;">
-						<span class="input-group-addon" id="basic-addon1">Senha</span>
-						<input type="password" class="form-control" placeholder="senha" aria-describedby="basic-addon2">
+						<span class="input-group-addon" id="basic-addon1" for="senha">Senha</span>
+						<input id="senha" type="password" class="form-control" placeholder="senha" aria-describedby="basic-addon2">
 					</div>
-					<input type="button" class="btn" style="margin-top: 3%; width: 100%" value="Entrar">
+					<input type="button" id="btn_entrar" class="btn btn-primary" style="margin-top: 3%; width: 100%" value="Entrar">
 					<div class="col-md-12" style="margin-top: 3%;">
 						<div class="col-md-6" align="left" style="margin-top: -10px;">
 							<a style="margin-left: -40px;">
@@ -34,33 +33,20 @@
 							</a>
 						</div>
 						<div class="col-md-6" align="right" style="margin-top: 5px">
-							<a href="" style="margin-right: -26px;"><span>Não possuo cadastro</span></a><!-- enviar para pagina de cadastro -->
+							<a href="<?php echo $path_raiz.'cadastro/'; ?>" style="margin-right: -26px;"><span>Não possuo cadastro</span></a><!-- enviar para pagina de cadastro -->
 						</div>
 					</div>					
 				</div>
-				<div class="col-md-4"></div>
 			</div>					
 		</div>
 	</body>
 	<script src="<?php echo $path_js ?>jquery.min.js"></script>
 	<script src="<?php echo $path_js ?>bootstrap.min.js"></script>
-	<!--<style>
-		footer {
-		    position: fixed;
-		    height: 100px;
-		    bottom: 0;
-		    width: 100%;
-		}
-	</style>
-	<footer class="fixed-bottom">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="copyright">
-						© 2017, Kaio Nascimento, Todos os direitos reservados
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>-->
+	<script>
+		$('#btn_entrar').click(function(){
+			if( $('#email').val() != '' && $('#senha').val() != '' ){
+				// valida login
+			}
+		});
+	</script>
 </html>

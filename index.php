@@ -1,6 +1,6 @@
+<?php include_once("paths.php"); ?>
 <html lang="pt-br">
 	<head>
-		<?php include_once("paths.php"); ?>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,62 +8,75 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
 	<body>
-		<div class="container">
+		<div class="container col-md-12">
 			<div class="row">
-				<div class="col-md-4" align="right" style="margin-top: 1%; float: right; margin-right: 105px;">
-					<!-- Para usuários não logados-->
-					<a>
-						<spam>Minha conta / Cadastrar</spam>
-					</a>
-					<!-- Para usuários logados acessar seus perfis 
-					<a>
-						<h4>Fulano da Silva</h4>
-					</a>-->
+				<div class="col-md-4" align="right" style="margin-top: 1%; float: right; margin-right: 20px;">
+<?php
+					if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
+?>
+						<!-- Para usuários logados acessar seus perfis -->
+						<a href="#">
+							<h4><?php echo $_SESSION["nome_usuario"]; ?></h4>
+						</a>
+<?php
+					}else{
+?>
+						<!-- Para usuários não logados-->
+						<a href="<?php echo $path_raiz.'login/'; ?>"> <spam>Minha conta / Cadastrar</spam> </a>
+<?php
+					}
+?>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12" style="margin-top: 7%">
+				<div class="col-md-12" style="margin-top: 4%">
 					<div class="col-md-4">
 						<div class="col-md-12" align="center" style="margin-top: 10%;">
 							<img src="<?php echo $path_midia ?>logo.png" width="300">
 						</div>
 					</div>
-					<div class="col-md-7 " style="margin-top: 13%;">
+					<div class="col-md-8" style="margin-top: 13%;">
 						<h1>Procura Direito</h1>
-						<form>
-							<div class="form-group">
-								<input type="text" class="form-control" id="input_search" placeholder="O que esta procurando?">
-							</div>
-						</form>
+						<div style="width: 80%; float: left;">
+							<form>
+								<div class="form-group">
+									<input type="text" class="form-control" id="input_search" placeholder="O que esta procurando?">
+								</div>
+							</form>
+						</div>
+						<div style="width: 15%; float: left;" align="center">
+							<button type="button" class="btn btn-primary btn-sm" id="btn_buscar">Buscar</button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row" align="right" style="margin-top: 10%; float: right; margin-right: 105px; margin-bottom: 1%;">
-				<div class="col-md-4">
-					<button class="btn btn-default" type="submit">Novo Material</button>
+<?php
+			if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
+?>
+				<div class="row" align="right" style="margin-top: 10%; float: right; margin-right: 20px; margin-bottom: 1%;">
+					<div class="col-md-4">
+						<a href="<?php echo path_raiz.'novo/'; ?>" class="btn btn-default" type="button">Novo Material</button>
+					</div>
 				</div>
-			</div>
+<?php
+			}
+?>
 		</div>
 	</body>
 	<script src="<?php echo $path_js ?>jquery.min.js"></script>
 	<script src="<?php echo $path_js ?>bootstrap.min.js"></script>
-	<!--<style>
-		footer {
-		    position: fixed;
-		    height: 100px;
-		    bottom: 0;
-		    width: 100%;
+	<script>
+		$('#btn_buscar').click(function(){
+			if( $('#input_search').val() != '' ){
+				busca_conteudo();
+			}
+		});
+
+		// fazer chamar metodo busca_conteudo caso pressione o enter também
+
+		function busca_conteudo(){
+			var buscar = $('#input_search').val();
+			// passa por post string para resultado-busca
 		}
-	</style>
-	<footer class="fixed-bottom">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="copyright">
-						© 2017, Kaio Nascimento, Todos os direitos reservados
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>-->
+	</script>
 </html>
