@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12"> 
 					<div class="col-md-8 center-block" style="float: none;">
 						<form style="margin-top: 5%">
 							<div class="form-group">
