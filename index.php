@@ -73,10 +73,28 @@
 		});
 
 		// fazer chamar metodo busca_conteudo caso pressione o enter também
-
 		function busca_conteudo(){
 			var buscar = $('#input_search').val();
 			// passa por post string para resultado-busca
 		}
+
+		function teste(){
+			$.ajax({
+				url: "http://127.0.0.1:8000/usuario/cadastrar",
+				crossDomain: true,
+				//headers: {'X-Requested-With': 'XMLHttpRequest'},
+				type: "GET",
+		        //dataType: 'json',
+	  			//dataType: 'jsonp',
+				success: function(resultado){
+		        	console.log("aqui: "+resultado);
+			    },
+			    error: function(res){
+			    	console.log("erro: "+res);
+			    }
+			});
+		}
+
+		teste();
 	</script>
 </html>
