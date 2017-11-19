@@ -13,21 +13,26 @@
 			//if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
 ?>
 				<div class="row">
-					<div class="col-md-12 shadow_bottom" style="height: 60px;">
-						<div class="col-md-6">
-							<h3 style="margin-top: 18px;">Procura Direito</h3>
+					<div class="col-md-12 shadow_bottom" style="height: 70px;">
+						<div class="col-md-6" style="margin-top: 5px;">
+							<div style="float: left; width: 10%;">
+								<img src="<?php echo $path_midia ?>logo.png"  width="60">
+							</div>
+							<div style="float: left;">
+								<h3>Procura Direito</h3>
+							</div>
 						</div>
 						<div class="col-md-6" align="right">
 							<div style="margin-top: 23px"><h4>Fulano da Silva</h4></div>
 						</div>
 					</div>
-					<div class="col-md-12 shadow_bottom" align="center" style="min-height: 70px;">
+					<div class="col-md-12" align="center" style="min-height: 70px;">
 						<h2>Cadastrar novo material</h2>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-10 center-block" style="float: none;">
-						<form style="margin-top: 3%;">
+						<form style="margin-top: 1%;">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="col-md-6">

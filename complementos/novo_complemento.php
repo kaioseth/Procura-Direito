@@ -10,18 +10,23 @@
 	<body>
 		<div class="container col-md-12">
 <?php
-			if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
+			//if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
 ?>
 				<div class="row">
-					<div class="col-md-12 shadow_bottom" style="height: 60px;">
-						<div class="col-md-6">
-							<h3 style="margin-top: 18px;">Procura Direito</h3>
+					<div class="col-md-12 shadow_bottom" style="height: 70px;">
+						<div class="col-md-6" style=" margin-top: 5px;">
+							<div style="float: left; width: 10%;">
+								<img src="<?php echo $path_midia ?>logo.png"  width="60">
+							</div>
+							<div style="float: left;">
+								<h3>Procura Direito</h3>
+							</div>		
 						</div>
 						<div class="col-md-6" align="right">
-							<div style="margin-top: 23px"><h4><?php echo $_SESSION['nome_usuario']; ?></h4></div>
+							<div style="margin-top: 23px"><h4><?php //echo $_SESSION['nome_usuario']; ?></h4></div>
 						</div>
 					</div>
-					<div class="col-md-12 shadow_bottom" style="min-height: 70px;">
+					<div class="col-md-12" style="min-height: 70px;">
 						<div class="col-md-6">
 							<h3>Alterar material: <span style="color: #bbb;">Revisão de leis de desmatamento</span></h3>
 						</div>
@@ -61,9 +66,9 @@
 				</div>
 				
 <?php
-			}else{
+			/*}else{
 				echo 'Essa página é visivel somente para usuários que estejam logados!';
-			}
+			}*/
 ?>
 		</div>
 	</body>

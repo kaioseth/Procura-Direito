@@ -8,27 +8,28 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
 	<body>
-		<div class="container">
+		<div class="container col-md-12">
 			<div class="row">
-				<div class="col-md-12 shadow_bottom" style="height: 60px;">
-					<div class="col-md-6">
-						<h3 style="margin-top: 18px;">Procura Direito</h3>
+				<div class="col-md-12 shadow_bottom" style="height: 70px;">
+					<div class="col-md-6" style="margin-top: 5px;">
+						<div style="float: left; width: 10%;">
+							<img src="<?php echo $path_midia ?>logo.png"  width="60">
+						</div>
+						<div style="float: left; ">
+							<h3>Procura Direito</h3>
+						</div>							
 					</div>
 					<div class="col-md-6" align="right">
 						<div style="margin-top: 23px"><h4>Fulano da Silva</h4></div>
 					</div>
 				</div>
-				<div class="col-md-12 shadow_bottom" style="min-height: 70px;">
-					<div class="col-md-6" align="left">
-						<h3>Nome do material</h3>	
-					</div>
-					<div class="col-md-6" align="right" style="margin-top: 2%">
-						<a><span>Complementar material</span></a>	
-					</div>
-				</div>
 			</div>
 			<div class="row" style="margin-top: 1%;">
-				<div class="col-md-12">
+				<div class="col-md-12" style="float: right; text-align: right;">
+					<a><span>Complementar material</span></a>
+				</div>
+				<div class="col-md-12" style="margin-top: 2%;">
+					<div class="col-md-10 center-block" style="float: none;">
 						<form>
 							<div class="row">
 								<div class="col-md-12">
@@ -63,6 +64,7 @@
 								</div>
 							</div>
 						</form>
+					</div>
 				</div>
 			</div>
 		</div>

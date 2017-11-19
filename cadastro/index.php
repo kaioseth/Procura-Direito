@@ -20,7 +20,7 @@
 							<div class="col-md-12" align="center">
 								<img src="<?php echo $path_midia ?>logo.png" width="300">
 							</div>
-							<form style="margin-top: 3%">
+							<form style="margin-top: 5%">
 								<div class="form-group">
 									<input type="text" class="form-control" id="nome" placeholder="Nome">
 								</div>
