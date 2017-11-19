@@ -80,14 +80,11 @@
 
 		function teste(){
 			$.ajax({
-				url: "http://127.0.0.1:8000/usuario/cadastrar",
+				url: "http://127.0.0.1:8000/usuario/valida_login",
 				crossDomain: true,
-				//headers: {'X-Requested-With': 'XMLHttpRequest'},
 				type: "GET",
-		        //dataType: 'json',
-	  			//dataType: 'jsonp',
 				success: function(resultado){
-		        	console.log("aqui: "+resultado);
+		        	console.log("sucesso: "+resultado);
 			    },
 			    error: function(res){
 			    	console.log("erro: "+res);
