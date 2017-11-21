@@ -7,21 +7,17 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
-	<body style="overflow: hidden;">
+	<body>
 		<div class="container col-md-12">
 			<div class="row">
-				<div class="col-md-12 shadow_bottom" style="height: 70px;">
-					<div class="col-md-6" style="margin-top: 5px;">
-							<div style="float: left; width: 10%;">
-								<img src="<?php echo $path_midia ?>logo.png"  width="60">
-							</div>
-							<div style="float: left;">
-								<h3>Procura Direito</h3>
-							</div>							
-						</div>
-					<div class="col-md-6" align="right">
-						<div style="margin-top: 18px"><a href="<?php echo $path_raiz.'login/'; ?>">Minha Conta / Cadastrar</a></div>
-					</div>
+				<div class="col-md-12 alert alert-success" id="sucesso" style="text-align: center; display: none;">
+					<strong>Sugestão cadastrada com sucesso!</strong> Obrigado.
+				</div>
+				<div class="col-md-12 alert alert-danger"  id="falha" style="text-align: center; display: none;">
+					<strong>Erro ao cadastrar sugestão!</strong> Tente novamente em instantes.
+				</div>
+				<div class="col-md-12 shadow_bottom" id="topo_nome" style="height: 70px;">
+					<?php include_once('../estrutura/topo_interno.php'); ?>
 				</div>
 				<div class="col-md-12 " align="center" style="min-height: 70px;">
 					<h2>Sugestões</h2>
@@ -41,13 +37,16 @@
 								<span>Por que cadastrar uma sugestão?</span>
 							</div>
 							<div class="form-group">
-								<input type="radio" name="sugestao_radio" onclick="muda_radio(1);"> Não encontrei o que procurava
+								<input type="radio" name="sugestao_radio" onclick="muda_radio(1);">
+								Não encontrei o que procurava
 							</div>
 							<div class="form-group">
-								<input type="radio" name="sugestao_radio" onclick="muda_radio(2);"> Sugestão sobre o portal
+								<input type="radio" name="sugestao_radio" onclick="muda_radio(2);">
+								Sugestão sobre o portal
 							</div>
 							<div class="form-group">
-								<input type="radio" name="sugestao_radio" onclick="muda_radio(3);"> Outras
+								<input type="radio" name="sugestao_radio" onclick="muda_radio(3);">
+								Outras
 							</div>
 							<div class="form-group">
 								<textarea class="form-control" id="sugestao" placeholder="O que pode nos sugerir?" style="min-height: 100px;"></textarea>
@@ -78,7 +77,36 @@
 			var sugestao 	= $('#sugestao').val();
 
 			if( nome != '' && email != '' && sugestao != '' && opcao_radio != '' ){
-				// ajax que commita sugestão
+				$.ajax({
+					//url: "http://127.0.0.1:8000/usuario/valida_login",
+					url: "commit.php",
+					crossDomain: true,
+					//type: "GET",
+					type: "POST",
+					data : {
+						nome 		: nome,
+						email 		: email,
+						cauxa 		: opcao_radio,
+						mensagem 	: sugestao
+					},
+					success: function(resultado){
+						console.log("sucesso: "+resultado);
+						if( resultado == 1 ){
+							$('#sucesso').show("slow");
+							window.setTimeout(function() {
+							    window.location.href='<?php echo $path_raiz; ?>';
+							}, 5000);
+						}else{
+							$('#falha').show("slow");
+							window.setTimeout(function() {
+							    location.reload();
+							}, 5000);
+						}
+				    },
+				    error: function(res){
+				    	console.log("Erro: "+res);
+				    }
+				});
 			}else{
 				alert('Por favor, preencha todos os campos para cadastrar sua sugestão.');
 			}

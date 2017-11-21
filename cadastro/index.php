@@ -10,9 +10,9 @@
 	<body>
 		<div class="container col-md-12">
 <?php
-			if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
+			//if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
 				echo 'Você ja está logado. Aproveite todos os recursos do portal.';
-			}else{
+			//}else{
 ?>
 				<div class="row">
 					<div class="col-md-12">
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 <?php
-			} // fim comparação se ja está logado
+			//} // fim comparação se ja está logado
 ?>
 		</div>
 	</body>

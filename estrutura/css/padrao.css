@@ -4,7 +4,7 @@ html{
 }
 body{
 	background-color: #f3f3f3 !important;
-	overflow: hidden !important;
+	/*overflow: hidden !important;*/
 }
 .container{
 	height: 100%;

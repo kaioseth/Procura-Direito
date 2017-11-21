@@ -10,12 +10,12 @@
 	<body>
 		<div class="container col-md-12">
 			<div class="row">
-				<div class="col-md-4" align="right" style="margin-top: 1%; float: right; margin-right: 20px;">
+				<div class="col-md-4" align="right" id="topo_nome" style="margin-top: 1%; float: right; margin-right: 20px;">
 <?php
 					if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
 ?>
 						<!-- Para usuários logados acessar seus perfis -->
-						<a href="#">
+						<a href="<?php echo $path_raiz.'perfil/index.php'; ?>">
 							<h4><?php echo $_SESSION["nome_usuario"]; ?></h4>
 						</a>
 <?php
@@ -27,6 +27,11 @@
 					}
 ?>
 				</div>
+				<div class="col-md-12" id="alerta_busca" style="text-align: center; display: none;">
+					<div class="alert alert-warning" role="alert">
+						<strong>Para realizar uma busca deve preencher o campo do conteúdo e clicar no botão "Buscar".</strong>
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="margin-top: 4%">
@@ -35,7 +40,7 @@
 							<img src="<?php echo $path_midia ?>logo.png" width="300">
 						</div>
 					</div>
-					<div class="col-md-8" style="margin-top: 13%;">
+					<div class="col-md-8" style="margin-top: 10%;">
 						<h1>Procura Direito</h1>
 						<div style="width: 80%; float: left;">
 							<form>
@@ -44,8 +49,8 @@
 								</div>
 							</form>
 						</div>
-						<div style="width: 15%; float: left;" align="center">
-							<button type="button" class="btn btn-primary btn-sm" id="btn_buscar">Buscar</button>
+						<div style="width: 10%; float: left;" align="center">
+							<button type="button" class="btn btn-primary btn-sm" id="btn_buscar">  Buscar  </button>
 						</div>
 					</div>
 				</div>
@@ -53,9 +58,13 @@
 <?php
 			if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
 ?>
-				<div class="row" align="right" style="margin-top: 10%; float: right; margin-right: 20px; margin-bottom: 1%;">
-					<div class="col-md-4">
-						<a href="<?php echo path_raiz.'novo/'; ?>" class="btn btn-default" type="button">Novo Material</button>
+				<div class="row" style="margin-top: 9%;">
+					<div class="col-md-4" align="left" style="float: left; margin-bottom: 2%; margin-left: 2%;">
+						<a href="<?php echo $path_raiz.'sugestoes/index.php'; ?>" class="btn btn-warning">Fazer sugestão</a>
+					</div>
+
+					<div class="col-md-4" align="right" style="float: right; margin-bottom: 2%; margin-right: 2%;">
+						<a href="<?php echo $path_raiz.'novo/index.php'; ?>" class="btn btn-success">Novo Material</a>
 					</div>
 				</div>
 <?php
@@ -63,26 +72,35 @@
 ?>
 		</div>
 	</body>
+
 	<script src="<?php echo $path_js ?>jquery.min.js"></script>
 	<script src="<?php echo $path_js ?>bootstrap.min.js"></script>
+
 	<script>
 		$('#btn_buscar').click(function(){
 			if( $('#input_search').val() != '' ){
 				busca_conteudo();
+			}else{
+				$('#topo_nome').hide();
+				$('#alerta_busca').show('slow');
+				
+				window.setTimeout(function() {
+				    $('#alerta_busca').hide();
+				    $('#topo_nome').show('slow');
+				}, 5000);
 			}
 		});
 
 		// fazer chamar metodo busca_conteudo caso pressione o enter também
 		function busca_conteudo(){
 			var buscar = $('#input_search').val();
-			// passa por post string para resultado-busca
-		}
-
-		function teste(){
 			$.ajax({
-				url: "http://127.0.0.1:8000/usuario/valida_login",
+				url: "",
 				crossDomain: true,
-				type: "GET",
+				type: "POST",
+				data : {
+					titulo : buscar
+				},
 				success: function(resultado){
 		        	console.log("sucesso: "+resultado);
 			    },
@@ -91,7 +109,5 @@
 			    }
 			});
 		}
-
-		teste();
 	</script>
 </html>
