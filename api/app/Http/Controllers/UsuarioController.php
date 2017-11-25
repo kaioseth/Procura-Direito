@@ -23,13 +23,14 @@ class UsuarioController extends Controller{
     }
 
     public function valida_login(Request $request){
-    	$users = DB::table('usuarios')->select('id, nome')->where([
+    	/*$users = DB::table('usuarios')->select('id, nome')->where([
                                                 ["email", "=", '"'.$request->email.'"'],
                                                 ['senha', '=', "'".$request->senha.'"'],
-                                             ])->get();
+                                             ])->get();*/
 
 
 
-    	return "método valida_login com vars: ".$request->email." | ".$request->senha." || usuario: ";
+    	//return "método valida_login com vars: ".$request->email." | ".$request->senha." || usuario: ";
+        return "método valida login";
     }
 }

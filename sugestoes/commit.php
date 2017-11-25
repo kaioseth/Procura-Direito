@@ -13,7 +13,7 @@
 	$campo = " ";
 	$valor = " ";
 
-	if( $_SESSION['id_usuario'] != '' ){
+	if( isset($_SESSION['id_usuario']) ){
 		$campo = ", id_usuario";
 		$valor = ", ".$_SESSION['id_usuario'];
 	}
@@ -24,10 +24,10 @@
 									texto
 									".$campo."
 								  )
-						  VALUES ( '".$nome."',
+						  VALUES ( '".utf8_encode($nome)."',
 						  		   '".$email."',
 						  		   '".$causa."',
-						  		   '".$mensagem."'
+						  		   '".utf8_encode($mensagem)."'
 						  		   ".$valor."
 								 )";
 

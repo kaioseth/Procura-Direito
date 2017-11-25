@@ -10,7 +10,7 @@
 	<body>
 		<div class="container col-md-12">
 <?php
-			if( $_SESSION['usuario_logado'] != 'sim' ){
+			if( !isset($_SESSION['usuario_logado']) ){
 ?>
 				<div class="row">
 					<div class="col-md-12 alert alert-success" id="sucesso" style="text-align: center; display: none;">
@@ -66,17 +66,14 @@
 		$('#btn_entrar').click(function(){
 			if( $('#email').val() != '' && $('#senha').val() != '' ){
 				$.ajax({
-					//url: "http://127.0.0.1:8000/usuario/valida_login",
 					url: "valida_login.php",
-					crossDomain: true,
-					//type: "GET",
 					type: "POST",
 					data : {
 						email : $('#email').val(),
 						senha : $('#senha').val()
 					},
 					success: function(resultado){
-						//console.log("sucesso: "+resultado);
+						console.log("sucesso: "+resultado);
 						if( resultado == 1 ){
 							$('#sucesso').show("slow");
 							window.setTimeout(function() {
@@ -89,8 +86,8 @@
 							}, 5000);
 						}
 				    },
-				    error: function(res){
-				    	console.log("Erro: "+res);
+				    error: function(resultado){
+				    	console.log("Erro: "+resultado);
 				    }
 				});
 			}

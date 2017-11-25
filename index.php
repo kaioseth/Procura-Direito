@@ -55,21 +55,22 @@
 					</div>
 				</div>
 			</div>
-<?php
-			if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
-?>
-				<div class="row" style="margin-top: 9%;">
-					<div class="col-md-4" align="left" style="float: left; margin-bottom: 2%; margin-left: 2%;">
-						<a href="<?php echo $path_raiz.'sugestoes/index.php'; ?>" class="btn btn-warning">Fazer sugestão</a>
-					</div>
 
-					<div class="col-md-4" align="right" style="float: right; margin-bottom: 2%; margin-right: 2%;">
-						<a href="<?php echo $path_raiz.'novo/index.php'; ?>" class="btn btn-success">Novo Material</a>
-					</div>
+			<div class="row" style="margin-top: 9%;">
+				<div class="col-md-4" align="left" style="float: left; margin-bottom: 2%; margin-left: 2%;">
+					<a href="<?php echo $path_raiz.'sugestoes/index.php'; ?>" class="btn btn-warning">Fazer sugestão</a>
 				</div>
 <?php
-			}
+				if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
 ?>
+					<div class="col-md-4" align="right" style="float: right; margin-bottom: 2%; margin-right: 2%;">
+						<a href="<?php echo $path_raiz.'material/'; ?>" class="btn btn-success">Novo Material</a>
+					</div>
+<?php
+				}
+?>
+			</div>
+
 		</div>
 	</body>
 

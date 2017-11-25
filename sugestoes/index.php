@@ -53,7 +53,9 @@
 							</div>
 							<div class="form-group" align="right" style="margin-top: 3%; margin-bottom: 3%;">
 								<p>
-									<button type="button" class="btn btn-primary btn-sm" id="btn_salvar">Enviar Sugestão</button>
+									<button type="button" class="btn btn-primary btn-sm" id="btn_salvar">
+										Enviar Sugestão
+									</button>
 								</p>
 							</div>
 						</form>
@@ -78,15 +80,12 @@
 
 			if( nome != '' && email != '' && sugestao != '' && opcao_radio != '' ){
 				$.ajax({
-					//url: "http://127.0.0.1:8000/usuario/valida_login",
 					url: "commit.php",
-					crossDomain: true,
-					//type: "GET",
 					type: "POST",
 					data : {
 						nome 		: nome,
 						email 		: email,
-						cauxa 		: opcao_radio,
+						causa 		: opcao_radio,
 						mensagem 	: sugestao
 					},
 					success: function(resultado){
@@ -108,7 +107,10 @@
 				    }
 				});
 			}else{
-				alert('Por favor, preencha todos os campos para cadastrar sua sugestão.');
+				$('#falha').show("slow");
+				window.setTimeout(function() {
+				    location.reload();
+				}, 5000);
 			}
 		});
 	</script>
