@@ -26,12 +26,14 @@
 				$sql = "SELECT * FROM materiais WHERE id = ".$_GET['id'];
 				$row = mysqli_fetch_assoc( mysqli_query( $conexao,$sql ) );
 
-				$titulo_cabecalho = "Material: ".$row['titulo'];
+				$titulo_cabecalho 		= "Material: ".$row['titulo'];
+
 				$status_material 		= $row['satus'];
 				$value_titulo_material 	= $row['titulo'];
 				$value_corpo_material 	= $row['corpo'];
 				$id_area_material 		= $row['id_area_material'];
 				$id_material 			= $row['id'];
+				$extensao				= $row['anexo_extensao'];
 
 				if( $row['id_usuario'] === $_SESSION['id_usuario'] ){ // é o dono do material
 					$arquivo_include = 'form.php';
@@ -45,8 +47,9 @@
 					$status_material	 	= '';
 					$id_area_material 		= '';
 					$id_material 			= '';
+					$extensao				= '';
 					$arquivo_include 		= 'form.php';
-				}else{
+				}else{ // tentou acessar url direta sem estar logado
 ?>
 					<div class="col-md-12 alert alert-danger" style="text-align: center; margin-top: 20%">
 						<strong>Você não está logado!</strong> Clique <a href="<?php echo $path_raiz.'login/'; ?>">aqui</a> para ser redirecionado á página de login

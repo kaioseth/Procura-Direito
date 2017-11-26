@@ -1,5 +1,6 @@
 	<form style="margin-top: 1%;" enctype="multipart/form-data" action="salva_material.php" method="post">
 		<input type="hidden" name="id_material" value="<?php echo $id_material; ?>">
+		<input type="hidden" name="extensao_anexo" value="<?php echo $extensao; ?>">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="col-md-6">
@@ -12,7 +13,7 @@
 					<div class="form-group">
 						<select class="form-control" name="area_atuacao" required="required">
 							<option selected="selected" disabled="">Selecione a área do material</option>
-<?phph
+<?php
 							while( $row_area_material = mysqli_fetch_assoc( $res_area_material ) ){
 ?>
 								<option value="<?php echo $row_area_material['id']; ?>" <?php if( $id_area_material === $row_area_material['id'] ){ echo 'selected="selected"'; }  ?> >
@@ -29,6 +30,13 @@
 
 		<div class="row">
 			<div class="col-md-12">
+<?php
+				if( $_SESSION['id_usuario'] ){ // se usuario for o dono do material mostro campo de status e input file
+
+				}else{ // verifico se existe anexo e mostro somente icone de anexo para download
+
+				}
+?>
 				<div class="col-md-6">
 					<div class="col-md-12">
 						<div class="col-md-6" align="center">

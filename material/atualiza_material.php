@@ -13,75 +13,56 @@
 <?php
 	require_once('../db.php');
 
-	$instance = new db();
-	$conexao = $instance->conecta_mysql();
+	$instance 	= new db();
+	$conexao 	= $instance->conecta_mysql();
 
-	$nome 	= $_POST['nome'];
-	$email 	= $_POST['email'];
-	$fone 	= $_POST['telefone'];
-	$senha 	= $_POST['senha'];
-	$senha2	= $_POST['confirma_senha'];
+	$id_material		= $_POST['nome'];
+	$titulo 			= $_POST['email'];
+	$id_area 			= $_POST['telefone'];
+	$corpo 				= $_POST['senha'];
+	$status				= $_POST['confirma_senha'];
+	$id_dono_material	= $_POST['confirma_senha'];
+	$extensao_anexo		= $_POST['confirma_senha'];
 
-	$campo = "";
-	$valor = "";
-
-	if( $senha != '' && $senha === $senha2 ){
-		$campo = ", senha = ";
-		$valor = ", '".$senha."' ";
-	}
-
-	$foto 					= $_FILES["foto"];
-	$upload_imagem_sucesso 	= true; // passar para false
-
-	if( $foto != '' ){
-
-		//$diretorio = $path_midia.'perfil/'.$_SESSION['id_usuario'].'.jpg';
-		$diretorio = $path_midia_var.$_SESSION['id_usuario'].'.jpg';
-
-		unlink($diretorio);
-
-		if( move_uploaded_file($foto, $diretorio) ){
-			chmod($diretorio, 0777);
-			$upload_imagem_sucesso = true;
-		}else{
-			//$upload_imagem_sucesso = false;
+	if( $id_material != '' ){
+		if( $id_dono_material === $_SESSION['id_usuario'] ){ // fazendo alteração no próprio material
+			$sql = "UPDATE usuarios 
+				    SET nome 		= '".$nome."',
+				     	email 		= '".$email."',
+					 	fone 		= '".$fone."'
+					 
+				 	WHERE id = ".$_SESSION['id_usuario'];
+		}else{ // cadastrando complemento de material existente
+			$sql = "UPDATE usuarios 
+				    SET nome 		= '".$nome."',
+				     	email 		= '".$email."',
+					 	fone 		= '".$fone."'
+					 
+				 	WHERE id = ".$_SESSION['id_usuario'];
 		}
-
-	}else{
-		$upload_imagem_sucesso = true;
+	}else{ // cadastrando novo material
+		$sql = "UPDATE usuarios 
+			    SET nome 		= '".$nome."',
+			     	email 		= '".$email."',
+				 	fone 		= '".$fone."'
+				 
+			 	WHERE id = ".$_SESSION['id_usuario'];
 	}
 
-	$nome_ex = explode(" ",$nome);
-	$_SESSION['nome_usuario']	= $nome_ex[0].' '.$nome_ex[count($nome_ex)-1];
-
-	if( $upload_imagem_sucesso ){
-
-		$sql_atualiza = "UPDATE usuarios 
-						 SET nome 		= '".$nome."',
-						     email 		= '".$email."',
-							 fone 		= '".$fone."'
-							 ".$campo." ".$valor."
-						 WHERE id = ".$_SESSION['id_usuario'];
-		if( mysqli_query( $conexao, $sql_atualiza ) ){
+		
+		if( mysqli_query( $conexao, $sql ) ){
 ?>
 			<div class="col-md-12 alert alert-success" style="text-align: center; margin-top: 20%">
-				<strong>Dados alterados com sucesso!</strong>
+				<strong>Dados armazenados com sucesso!</strong>
 			</div>
 <?php
 		}else{
 ?>
 			<div class="col-md-12 alert alert-danger" style="text-align: center; margin-top: 20%">
-				<strong>Erro ao alterar seus dados, tente novamente mais tarde!</strong>
+				<strong>Erro ao salvar os dados, tente novamente mais tarde!</strong>
 			</div>			
 <?php
 		}
-	}else{
-?>
-		<div class="col-md-12 alert alert-danger" style="text-align: center; margin-top: 20%">
-			<strong>Ocorreu algum problema no upload de sua foto!</strong>
-		</div>
-<?php
-	}
 ?>
 	</body>
 </html>
