@@ -55,7 +55,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="file" class="form-control" name="arquivo">
+						<!--<input type="file" class="form-control" name="arquivo">-->
 					</div>
 				</div>
 			</div>

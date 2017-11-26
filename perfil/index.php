@@ -26,12 +26,12 @@
 								<div class="col-md-12">
 									<div class="col-md-8 center-block" style="float: none; height: 350px; border:1px dashed black; margin-top: 12%;">
 <?php
-										$imagem_usuario = $path_midia.'perfil/'.$_SESSION['id_usuario'].'.jpg';
+										/*$imagem_usuario = $path_midia.'perfil/'.$_SESSION['id_usuario'].'.jpg';
 										if(!file_exists($imagem_usuario)){ // entra nesse if caso não exista a imagem
 											$imagem_usuario = $path_midia.'perfil/avatar.png';
-										}
+										}*/
 ?>
-										<img src="<?php echo $imagem_usuario; ?>" style="width: 100%; height: 95%; margin-top: 4%;">
+										<img src="<?php echo $_SESSION['foto_usuario']; ?>" style="width: 100%; height: 95%; margin-top: 4%;">
 									</div>
 								</div>
 							</div>

@@ -41,7 +41,7 @@
 									<div class="col-md-5">
 										<div class="col-md-1">
 											<a style="cursor: pointer;" title="Download anexo do material">
-												<img src="<?php echo $path_midia; ?>download_a3.png" width="30">
+												<!--<img src="<?php echo $path_midia; ?>download_a3.png" width="30">-->
 											</a>
 										</div>
 										<div class="col-md-11" align="right">

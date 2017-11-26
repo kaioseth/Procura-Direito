@@ -35,6 +35,8 @@
 				$id_area_material 		= $row['id_material_area'];
 				$id_material 			= $row['id'];
 				$extensao				= $row['anexo_extensao'];
+				$id_dono_material		= $row['id_usuario'];
+				$data_postagem_material	= $row['data_cadastro'];
 
 				if( $row['id_usuario'] === $_SESSION['id_usuario'] ){ // é o dono do material
 					$arquivo_include = 'form.php';
@@ -50,6 +52,8 @@
 					$id_area_material 		= '';
 					$id_material 			= '';
 					$extensao				= '';
+					$id_dono_material		= '';
+					$data_postagem_material	= '';
 					$arquivo_include 		= 'form.php';
 				}else{ // tentou acessar url direta sem estar logado
 ?>

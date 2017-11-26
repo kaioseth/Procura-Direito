@@ -80,6 +80,24 @@
 	});
 
 	function remover_material(id){
-		// ajax de remoção
+		if( confirm( "Deseja realmente remover esse material?" ) ){
+			$.ajax({
+				url: "deleta_material.php",
+				type: "POST",
+				data : {
+					id : id
+				},
+				success: function(resultado){
+					if( resultado == 1 ){
+						location.reload();
+					}else{
+						console.log("Erro: "+resultado);	
+					}
+			    },
+			    error: function(resultado){
+			    	console.log("Error: "+resultado);
+			    }
+			});
+		}
 	}
 </script>

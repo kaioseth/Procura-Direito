@@ -17,11 +17,19 @@
 			$_SESSION['usuario_administrador'] = true;
 		}
 
+
+		$imagem_usuario = $path_midia.'perfil/'.$_SESSION['id_usuario'].'.jpg';
+		if(!file_exists($imagem_usuario)){ // entra nesse if caso não exista a imagem
+			$imagem_usuario = $path_midia.'perfil/avatar.png';
+		}
+
+
 		$nome = explode(" ",$row['nome']);
 
 		$_SESSION['usuario_logado'] = true;
 		$_SESSION['id_usuario'] 	= $row['id'];
 		$_SESSION['nome_usuario']	= $nome[0].' '.$nome[count($nome)-1];
+		$_SESSION['foto_usuario']	= $imagem_usuario;
 
 		$sql_atualiza_data_acesso = "UPDATE usuarios 
 							         SET data_ultimo_acesso = CURRENT_TIMESTAMP
