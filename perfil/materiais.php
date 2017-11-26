@@ -18,38 +18,36 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<div class="col-md-10 center-block" style="float: none; margin-top: 4%;">
-				<table class="table table-striped table-bordered">
-						<tbody>
+		<div class="col-md-12 center-block" style="float: none; margin-top: 4%;">
+			<table class="table table-striped table-bordered">
+				<tbody>
 <?php
-							$vazio = true;
-							while( $row = mysqli_fetch_assoc( $res ) ){
-								$vazio = false;
+					$vazio = true;
+					while( $row = mysqli_fetch_assoc( $res ) ){
+						$vazio = false;
 ?>
-								<tr>
-									<td>
-										<?php echo $row['titulo']; ?>
-										<span style="float: right; cursor: pointer;" title="Visualizar sugestão" onclick="abrir('../materiais/index.php?id=<?php echo $row['id']; ?>')">
-											<i class="fa fa-search-plus" aria-hidden="true"></i>
-										</span>
-									</td>
-								<tr>
+						<tr>
+							<td>
+								<?php echo $row['titulo']; ?>
+								<span style="float: right; cursor: pointer;" title="Visualizar sugestão" onclick="abrir('../materiais/index.php?id=<?php echo $row['id']; ?>')">
+									<i class="fa fa-search-plus" aria-hidden="true"></i>
+								</span>
+							</td>
+						<tr>
 <?php
-							}
-							if( $vazio ){
+					}
+					if( $vazio ){
 ?>
-								<tr>
-									<td>
-										Nenhum registro encontrado!
-									</td>
-								<tr>
+						<tr>
+							<td align="center">
+								Nenhum registro encontrado!
+							</td>
+						<tr>
 <?php
-							}
+					}
 ?>
-						</tbody>
-				</table>
-			</div>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

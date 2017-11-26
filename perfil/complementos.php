@@ -21,36 +21,34 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<div class="col-md-10 center-block" style="float: none; margin-top: 4%;">
-				<table class="table table-striped table-bordered">
-						<tbody>
+		<div class="col-md-12 center-block" style="float: none; margin-top: 4%;">
+			<table class="table table-striped table-bordered">
+				<tbody>
 <?php
-							$vazio = true;
+					$vazio = true;
 
-							while( $row = mysqli_fetch_assoc( $res ) ){
-								$vazio = false;
+					while( $row = mysqli_fetch_assoc( $res ) ){
+						$vazio = false;
 ?>
-								<tr>
-									<td>
-										<?php echo $row['titulo']; ?>
-									</td>
-								<tr>
+						<tr>
+							<td>
+								<?php echo $row['titulo']; ?>
+							</td>
+						<tr>
 <?php
-							}
-							if( $vazio ){
+					}
+					if( $vazio ){
 ?>
-								<tr>
-									<td>
-										Nenhum registro encontrado!
-									</td>
-								<tr>
+						<tr>
+							<td align="center">
+								Nenhum registro encontrado!
+							</td>
+						<tr>
 <?php
-							}
+					}
 ?>
-						</tbody>
-				</table>
-			</div>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
