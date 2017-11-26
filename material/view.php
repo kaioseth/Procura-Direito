@@ -17,19 +17,13 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="col-md-6">
-				<div class="col-md-12">
-					<div class="col-md-6" align="center">
-						<!-- aqui ia o radio de status -->
-					</div>
-					<div class="col-md-6" align="center">
-						<!-- aqui ficava check input file -->
-					</div>
-				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
 					<!-- aqui ficava input file -->
-					<!-- colocar aqui icone de download caso exista arquivo para esse material -->
+					<a href="" download="<?php echo $row['titulo']; ?>">
+						<i class="fa fa-file" aria-hidden="true"></i>
+					</a>
 				</div>
 			</div>
 		</div>

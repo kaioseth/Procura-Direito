@@ -6,6 +6,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $path_css ?>font-awesome.min.css">
 	</head>
 	<body style="overflow: hidden;">
 		<div class="container col-md-12">
@@ -26,21 +27,25 @@
 				$row = mysqli_fetch_assoc( mysqli_query( $conexao,$sql ) );
 
 				$titulo_cabecalho = "Material: ".$row['titulo'];
+				$status_material 		= $row['satus'];
+				$value_titulo_material 	= $row['titulo'];
+				$value_corpo_material 	= $row['corpo'];
+				$id_area_material 		= $row['id_area_material'];
+				$id_material 			= $row['id'];
 
-				if( $row['id_usuario'] === $_SESSION['id_usuario'] ){
-					// inclui o form
-					include_once('form.php');
+				if( $row['id_usuario'] === $_SESSION['id_usuario'] ){ // é o dono do material
+					$arquivo_include = 'form.php';
 				}else{
-					// inclui o view
-					include_once('view.php');
+					$arquivo_include = 'view.php';
 				}
 			}else{ // ta entrando em form para adicionar novo
 				if( isset($_SESSION['usuario_logado']) ){
 					$value_titulo_material 	= '';
 					$value_corpo_material 	= '';
-					$status_a_material	 	= '';
-					$status_i_material	 	= '';
-					include_once('form.php');
+					$status_material	 	= '';
+					$id_area_material 		= '';
+					$id_material 			= '';
+					$arquivo_include 		= 'form.php';
 				}else{
 ?>
 					<div class="col-md-12 alert alert-danger" style="text-align: center; margin-top: 20%">
@@ -60,7 +65,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-10 center-block" style="float: none;">
-					
+					<?php include_once($arquivo_include); ?>
 				</div>
 			</div>
 		</div>
@@ -72,16 +77,5 @@
 		function muda_status(aux){
 			status = aux;
 		}
-
-		$('#btn_cadastrar').click(function(){
-			var titulo 	= $('#titulo').val();
-			var area 	= $('#area_atuacao').val();
-			var corpo 	= $('#descricao').val();
-			if( titulo != '' && area != '' && status != ''&& corpo != '' ){
-				// ajax novo material
-			}else{
-				alert('Para prosseguir é obrigatório preencher todos os campos!');
-			}
-		});
 	</script>
 </html>

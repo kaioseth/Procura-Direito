@@ -1,20 +1,21 @@
-	<form style="margin-top: 1%;" enctype="multipart/form-data" action="atualiza_perfil.php" method="post">
+	<form style="margin-top: 1%;" enctype="multipart/form-data" action="salva_material.php" method="post">
+		<input type="hidden" name="id_material" value="<?php echo $id_material; ?>">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="form-control" name="titulo" placeholder="Como deseja chamar esse material?">
+						<input type="text" class="form-control" name="titulo" placeholder="Como deseja chamar esse material?" value="<?php echo $value_titulo_material; ?>" required="required">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<select class="form-control" name="area_atuacao">
+						<select class="form-control" name="area_atuacao" required="required">
 							<option selected="selected" disabled="">Selecione a área do material</option>
 <?phph
 							while( $row_area_material = mysqli_fetch_assoc( $res_area_material ) ){
 ?>
-								<option value="<?php echo $row_area_material['id']; ?>">
+								<option value="<?php echo $row_area_material['id']; ?>" <?php if( $id_area_material === $row_area_material['id'] ){ echo 'selected="selected"'; }  ?> >
 									<?php echo $row_area_material['nome']; ?>
 								</option>
 <?php
@@ -35,8 +36,8 @@
 								<span style="font-size: 16px;">
 									Status
 								</span>
-								<input type="radio" name="status" value="a" style="margin-left: 2%;" onclick="muda_status('A');"> Ativo
-								<input type="radio" name="status" value="i" onclick="muda_status('I');"> Inativo
+								<input type="radio" name="status" <?php if( $status_material == 'A' || $status_material == '' ){ echo 'selected="selected"'; } ?> value="a" style="margin-left: 2%;"> Ativo
+								<input type="radio" name="status"  <?php if( $status_material == 'I' ){ echo 'selected="selected"'; } ?> value="i"> Inativo
 							</div>
 						</div>
 						<div class="col-md-6" align="center">
@@ -56,7 +57,7 @@
 			<div class="col-md-12">
 				<div class="col-md-12">
 					<div class="form-group">
-						<textarea class="form-control" name="descricao" placeholder="Insira aqui o conteúdo" style="min-height: 250px;"></textarea>
+						<textarea class="form-control" name="descricao" placeholder="Insira aqui o conteúdo" style="min-height: 250px;"><?php echo $value_corpo_material; ?></textarea>
 					</div>
 				</div>
 			</div>
@@ -64,7 +65,7 @@
 
 		<div class="form-group" align="right" style="margin-top: 1%; margin-bottom: 1%;">
 			<p style="margin-right: 15px;">
-				<button id="btn_cadastrar" type="button" class="btn btn-primary btn-sm">Cadastrar material</button> 
+				<button id="btn_cadastrar" type="button" class="btn btn-primary btn-sm">Salvar</button> 
 			</p>
 		</div>
 	</form>
