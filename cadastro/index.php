@@ -6,6 +6,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
+		<link rel="shortcut icon" type="image/png" href="<?php echo $path_midia ?>favicon.png"/>
 	</head>
 	<body>
 		<div class="container col-md-12">

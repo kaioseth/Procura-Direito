@@ -12,6 +12,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo $path_css ?>font-awesome.min.css">
+<link rel="shortcut icon" type="image/png" href="<?php echo $path_midia ?>favicon.png"/>
 
 <form enctype="multipart/form-data" action="atualiza_perfil.php" method="post" style="margin-top: 5%;">
 	<div class="form-group">

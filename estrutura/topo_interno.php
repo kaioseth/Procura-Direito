@@ -4,23 +4,22 @@
 	</div>
 	<div style="float: left;">
 		<a href="<?php echo $path_raiz; ?>"><h3>Procura Direito</h3></a>
-	</div>							
+	</div>
 </div>
-<div class="col-md-6" align="right" style="top: 10%">
+<div class="col-md-6" align="right" style="top: 3%">
 <?php
 	if( isset($_SESSION["usuario_logado"]) ){ // retorna true caso exista valor na sessão
 ?>
 		<!-- Para usuários logados acessar seus perfis -->
-		<div>
+		
 			<a href="<?php echo $path_raiz.'perfil/index.php'; ?>">
 				<h4><?php echo $_SESSION["nome_usuario"]; ?></h4>
 			</a>
-		</div>
-		<div>
+		
 			<a href="<?php echo $path_raiz.'login/logout.php'; ?>">
-				<i class="fa fa-sign-out" style="font-size: 20px;" aria-hidden="true"></i>
+				<i class="fa fa-sign-out" style="font-size: 20px; color: #b10000;" aria-hidden="true"></i>
 			</a>
-		</div>
+		
 <?php
 	}else{
 ?>

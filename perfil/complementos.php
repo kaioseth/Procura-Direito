@@ -13,6 +13,7 @@
 ?>
 <link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo $path_css ?>font-awesome.min.css">
+<link rel="shortcut icon" type="image/png" href="<?php echo $path_midia ?>favicon.png"/>
 
 <div class="col-md-12" align="center">
 	<div class="row">

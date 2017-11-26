@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>font-awesome.min.css">
+		<link rel="shortcut icon" type="image/png" href="<?php echo $path_midia ?>favicon.png"/>
 	</head>
 	<body style="overflow: hidden;">
 		<div class="container col-md-12">

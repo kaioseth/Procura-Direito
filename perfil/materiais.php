@@ -10,6 +10,7 @@
 ?>
 <link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo $path_css ?>font-awesome.min.css">
+<link rel="shortcut icon" type="image/png" href="<?php echo $path_midia ?>favicon.png"/>
 
 <div class="col-md-12" align="center">
 	<div class="row">
@@ -29,10 +30,17 @@
 						<tr>
 							<td>
 								<?php echo $row['titulo']; ?>
+
+								<a onclick="remover_material(<?php echo $row['id']; ?>);">
+									<span style="float: right; cursor: pointer; color: #b10000;" title="Excluir material">
+										<i class="fa fa-trash-o" aria-hidden="true"></i>
+									</span>
+								</a>
+
 								<a href="../material/?id=<?php echo $row['id']; ?>">
-								<span style="float: right; cursor: pointer;" title="Visualizar sugestão">
-									<i class="fa fa-search-plus" aria-hidden="true"></i>
-								</span>
+									<span style="float: right; cursor: pointer; margin-right: 2%;" title="Visualizar material">
+										<i class="fa fa-search-plus" aria-hidden="true"></i>
+									</span>
 								</a>
 							</td>
 						<tr>
@@ -66,8 +74,12 @@
 	});
 
 	$('#cancelar').click(function(){
-			$('#volatil').hide('slow');
-			$('#volatil').html('');
-			$('#btns_perfil').show('slow');
-		});
+		$('#volatil').hide('slow');
+		$('#volatil').html('');
+		$('#btns_perfil').show('slow');
+	});
+
+	function remover_material(id){
+		// ajax de remoção
+	}
 </script>
