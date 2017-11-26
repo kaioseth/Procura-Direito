@@ -9,30 +9,37 @@
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
 	</head>
 	<body>
-
 <?php
-	require_once('../db.php');
+		require_once('../db.php');
 
-	$instance 	= new db();
-	$conexao 	= $instance->conecta_mysql();
+		$instance 	= new db();
+		$conexao 	= $instance->conecta_mysql();
 
-	$id_material		= $_POST['nome'];
-	$titulo 			= $_POST['email'];
-	$id_area 			= $_POST['telefone'];
-	$corpo 				= $_POST['senha'];
-	$status				= $_POST['confirma_senha'];
-	$id_dono_material	= $_POST['confirma_senha'];
-	$extensao_anexo		= $_POST['confirma_senha'];
+		$id_material		= $_POST['nome'];
+		$titulo 			= $_POST['email'];
+		$id_area 			= $_POST['telefone'];
+		$corpo 				= $_POST['senha'];
+		$status				= $_POST['confirma_senha'];
+		$id_dono_material	= $_POST['confirma_senha'];
+		$extensao_anexo		= $_POST['confirma_senha'];
 
-	if( $id_material != '' ){
-		if( $id_dono_material === $_SESSION['id_usuario'] ){ // fazendo alteração no próprio material
-			$sql = "UPDATE usuarios 
-				    SET nome 		= '".$nome."',
-				     	email 		= '".$email."',
-					 	fone 		= '".$fone."'
-					 
-				 	WHERE id = ".$_SESSION['id_usuario'];
-		}else{ // cadastrando complemento de material existente
+		if( $id_material != '' ){
+			if( $id_dono_material === $_SESSION['id_usuario'] ){ // fazendo alteração no próprio material
+				$sql = "UPDATE usuarios 
+					    SET nome 		= '".$nome."',
+					     	email 		= '".$email."',
+						 	fone 		= '".$fone."'
+						 
+					 	WHERE id = ".$_SESSION['id_usuario'];
+			}else{ // cadastrando complemento de material existente
+				$sql = "UPDATE usuarios 
+					    SET nome 		= '".$nome."',
+					     	email 		= '".$email."',
+						 	fone 		= '".$fone."'
+						 
+					 	WHERE id = ".$_SESSION['id_usuario'];
+			}
+		}else{ // cadastrando novo material
 			$sql = "UPDATE usuarios 
 				    SET nome 		= '".$nome."',
 				     	email 		= '".$email."',
@@ -40,15 +47,6 @@
 					 
 				 	WHERE id = ".$_SESSION['id_usuario'];
 		}
-	}else{ // cadastrando novo material
-		$sql = "UPDATE usuarios 
-			    SET nome 		= '".$nome."',
-			     	email 		= '".$email."',
-				 	fone 		= '".$fone."'
-				 
-			 	WHERE id = ".$_SESSION['id_usuario'];
-	}
-
 		
 		if( mysqli_query( $conexao, $sql ) ){
 ?>

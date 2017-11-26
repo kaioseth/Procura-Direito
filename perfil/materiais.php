@@ -29,9 +29,11 @@
 						<tr>
 							<td>
 								<?php echo $row['titulo']; ?>
-								<span style="float: right; cursor: pointer;" title="Visualizar sugestão" onclick="abrir('../materiais/index.php?id=<?php echo $row['id']; ?>')">
+								<a href="../material/?id=<?php echo $row['id']; ?>">
+								<span style="float: right; cursor: pointer;" title="Visualizar sugestão">
 									<i class="fa fa-search-plus" aria-hidden="true"></i>
 								</span>
+								</a>
 							</td>
 						<tr>
 <?php

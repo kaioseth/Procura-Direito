@@ -44,18 +44,18 @@
 								<span style="font-size: 16px;">
 									Status
 								</span>
-								<input type="radio" name="status" <?php if( $status_material == 'A' || $status_material == '' ){ echo 'selected="selected"'; } ?> value="a" style="margin-left: 2%;"> Ativo
-								<input type="radio" name="status"  <?php if( $status_material == 'I' ){ echo 'selected="selected"'; } ?> value="i"> Inativo
+								<input type="radio" name="status" <?php if( $status_material == 'A' || $status_material == '' ){ echo 'checked="checked"'; } ?> value="a" style="margin-left: 2%;"> Ativo
+								<input type="radio" name="status"  <?php if( $status_material == 'I' ){ echo 'checked="checked"'; } ?> value="i"> Inativo
 							</div>
 						</div>
 						<div class="col-md-6" align="center">
-							<input type="checkbox" name="possui_anexo"> Inserir anexo
+							<!--<input type="checkbox" name="possui_anexo"> Inserir anexo-->
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="file" class="form-control" name="arquivo" disabled="disabled">
+						<input type="file" class="form-control" name="arquivo">
 					</div>
 				</div>
 			</div>

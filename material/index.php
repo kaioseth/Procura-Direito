@@ -17,8 +17,8 @@
 			$conexao = $instance->conecta_mysql();
 
 			$sql_area_material = "SELECT * FROM materiais_area WHERE status = 'A' ORDER BY nome";
-			$res_area_material = mysqli_query( $conexao,$sql_area_direito );
-			$row_area_material_view = mysqli_fetch_assoc( mysqli_query( $conexao,$sql_area_direito ) );
+			$res_area_material = mysqli_query( $conexao,$sql_area_material );
+			$row_area_material_view = mysqli_fetch_assoc( mysqli_query( $conexao,$sql_area_material ) );
 
 			$titulo_cabecalho = "Cadastrar novo material";
 
@@ -28,16 +28,17 @@
 
 				$titulo_cabecalho 		= "Material: ".$row['titulo'];
 
-				$status_material 		= $row['satus'];
+				$status_material 		= $row['status'];
 				$value_titulo_material 	= $row['titulo'];
 				$value_corpo_material 	= $row['corpo'];
-				$id_area_material 		= $row['id_area_material'];
+				$id_area_material 		= $row['id_material_area'];
 				$id_material 			= $row['id'];
 				$extensao				= $row['anexo_extensao'];
 
 				if( $row['id_usuario'] === $_SESSION['id_usuario'] ){ // é o dono do material
 					$arquivo_include = 'form.php';
 				}else{
+					// se sessão id_usuario != de vazia, coloco link pra complementar material
 					$arquivo_include = 'view.php';
 				}
 			}else{ // ta entrando em form para adicionar novo
@@ -75,10 +76,4 @@
 	</body>
 	<script src="<?php echo $path_js ?>jquery.min.js"></script>
 	<script src="<?php echo $path_js ?>bootstrap.min.js"></script>
-	<script>
-		var status = '';
-		function muda_status(aux){
-			status = aux;
-		}
-	</script>
 </html>
