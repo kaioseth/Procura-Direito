@@ -44,6 +44,7 @@
 		if( move_uploaded_file($foto, $diretorio) ){
 			chmod($diretorio, 0777);
 			$upload_imagem_sucesso = true;
+			$_SESSION['foto_usuario'] = $diretorio;
 		}else{
 			//$upload_imagem_sucesso = false;
 		}

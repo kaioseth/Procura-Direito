@@ -18,7 +18,7 @@
 		}
 
 
-		$imagem_usuario = $path_midia.'perfil/'.$_SESSION['id_usuario'].'.jpg';
+		$imagem_usuario = $path_midia.'perfil/'.$row['id'].'.jpg';
 		if(!file_exists($imagem_usuario)){ // entra nesse if caso não exista a imagem
 			$imagem_usuario = $path_midia.'perfil/avatar.png';
 		}

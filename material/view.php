@@ -12,12 +12,12 @@
 			<form>
 				<div class="row">
 					<div class="col-md-12">
-						<div class="col-md-7">
+						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" class="form-control" id="titulo" value="<?php echo $value_titulo_material; ?>" disabled="disabled">
 							</div>
 						</div>
-						<div class="col-md-5">
+						<div class="col-md-6" align="right">
 							<!--<div class="col-md-1">
 								<a style="cursor: pointer;" title="Download anexo do material">
 									<img src="<?php echo $path_midia; ?>download_a3.png" width="30">
@@ -29,18 +29,19 @@
 
 							$nome_dono = explode(" ",$row_dono_material['nome']);
 
+							$data_postagem = explode("-",$data_postagem_material);
+							$data_postagem_material = $data_postagem[2].'/'.$data_postagem[1].'/'.$data_postagem[0];
+
 							$sql_qtd_complementos = "SELECT COUNT(id) AS quantidade
 													 FROM materiais_alteracao 
 													 WHERE id_material = ".$id_material." AND alteracao_aprovada ='S'";
 							$row_qtd_complementos = mysqli_fetch_assoc( mysqli_query( $conexao,$sql_qtd_complementos ) );
 ?>
-							<div class="col-md-11" align="right">
-								<span style="text-align: right;">
-									Material postado por <?php echo $nome_dono[0].' '.$nome_dono[count($nome_dono)-1]; ?> em <?php echo $data_postagem_material; ?>
-									<br>
-									Material sofreu <?php echo $row_qtd_complementos['quantidade']; ?> alterações
-								</span>
-							</div>
+							<span style="text-align: right;">
+								Material postado por <?php echo $nome_dono[0].' '.$nome_dono[count($nome_dono)-1]; ?> em <?php echo $data_postagem_material; ?>
+								<br>
+								Material sofreu <?php echo $row_qtd_complementos['quantidade']; ?> alterações
+							</span>
 						</div>
 					</div>
 				</div>
