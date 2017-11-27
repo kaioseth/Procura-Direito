@@ -5,9 +5,9 @@
 	$instance = new db();
 	$conexao = $instance->conecta_mysql();
 
-	$sql = "SELECT malt.* 
+	$sql = "SELECT malt.*, ma.titulo 
 			FROM materiais ma JOIN materiais_alteracao malt ON malt.id_material = ma.id
-			WHERE ma.id_usuario = ".$_SESSION['id_usuario']." AND malt.alteracao_aprovada = 'N'
+			WHERE ma.id_usuario = ".$_SESSION['id_usuario']." AND malt.alteracao_aprovada = 'P'
 			ORDER BY malt.data DESC";
 	$res = mysqli_query( $conexao, $sql );
 ?>
@@ -30,10 +30,26 @@
 
 					while( $row = mysqli_fetch_assoc( $res ) ){
 						$vazio = false;
+
+						$data_complemento = explode("-",$row['data']);
+						$data_complemento = $data_complemento[2].'/'.$data_complemento[1].'/'.$data_complemento[0];
+
+						$sql_autor = "SELECT id, nome FROM usuarios WHERE id = ".$row['id_usuario'];
+						$row_autor = mysqli_fetch_assoc( mysqli_query( $conexao,$sql_autor ) );
+
+						$nome_autor = explode(" ",$row_autor['nome']);
+						$nome_autor	= $nome_autor[0].' '.$nome_autor[count($nome_autor)-1];
 ?>
 						<tr>
 							<td>
-								<?php echo $row['titulo']; ?>
+								<?php echo $row['titulo'].' - Complemento postado por'; ?>
+								<a href="<?php echo $path_raiz.'busca/?i='.$row_autor['id'] ?>">
+									<?php echo $nome_autor;  ?>
+								</a>
+								em <?php echo $data_complemento; ?>
+								<span style="float: right; cursor: pointer;" title="Visualizar complemento" onclick="abrir('complemento_view.php?id=<?php echo $row['id']; ?>')">
+									<i class="fa fa-search-plus" aria-hidden="true"></i>
+								</span>
 							</td>
 						<tr>
 <?php

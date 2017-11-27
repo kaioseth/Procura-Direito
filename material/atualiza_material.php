@@ -16,14 +16,21 @@
 		$instance 	= new db();
 		$conexao 	= $instance->conecta_mysql();
 
-		$id_material		= $_POST['id_material'];
-		$titulo 			= $_POST['titulo'];
-		$id_area 			= $_POST['area_atuacao'];
-		$corpo 				= $_POST['descricao'];
-		$status				= $_POST['status'];
-		$id_dono_material	= $_POST['id_dono'];
-		$extensao_anexo		= $_POST['extensao_anexo'];
-		//$observacao			= $_POST['observacao'];
+		$id_material = $_POST['id_material'];
+		
+		if( isset($_POST['titulo']) ){ $titulo = $_POST['titulo']; }
+
+		if( isset($_POST['area_atuacao']) ){ $id_area = $_POST['area_atuacao']; }
+
+		if( isset($_POST['descricao']) ){ $corpo = $_POST['descricao']; }
+
+		if( isset($_POST['status']) ){ $status = $_POST['status']; }
+
+		if( isset($_POST['id_dono']) ){ $id_dono_material = $_POST['id_dono']; }
+
+		if( isset($_POST['extensao_anexo']) ){ $extensao_anexo = $_POST['extensao_anexo']; }
+
+		if( isset($_POST['observacao']) ){ $observacao = $_POST['observacao']; }
 
 		if( $id_material != '' ){
 			if( $id_dono_material === $_SESSION['id_usuario'] ){ // fazendo alteração no próprio material
@@ -38,12 +45,14 @@
 														  id_material,
 														  observacao,
 														  alteracao_aprovada,
-														  novo_corpo )
+														  novo_corpo,
+														  data )
 												 VALUES ( ".$_SESSION['id_usuario'].",
 												 		  ".$id_material.",
 												 		  '".$observacao."',
-												 		  'N',
-												 		  '".$corpo."' )";
+												 		  'P',
+												 		  '".$corpo."',
+												 		  CURRENT_DATE )";
 			}
 		}else{ // cadastrando novo material
 			$sql = "INSERT INTO materiais ( id_usuario,
@@ -59,7 +68,9 @@
 								   			'".$status."',
 								   			".$id_area." )";
 		}
-		
+	
+		//echo $sql;
+
 		if( mysqli_query( $conexao, $sql ) ){
 ?>
 			<div class="col-md-12 alert alert-success" style="text-align: center; margin-top: 20%">

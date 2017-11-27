@@ -31,13 +31,7 @@
 
 		<div class="row">
 			<div class="col-md-12">
-<?php
-				if( $_SESSION['id_usuario'] ){ // se usuario for o dono do material mostro campo de status e input file
 
-				}else{ // verifico se existe anexo e mostro somente icone de anexo para download
-
-				}
-?>
 				<div class="col-md-6">
 					<div class="col-md-12">
 						<div class="col-md-6" align="center">
@@ -56,7 +50,13 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<!--<input type="file" class="form-control" name="arquivo">-->
+<?php
+						if( $_SESSION['id_usuario'] ){ // se usuario for o dono do material mostro campo de status e input file
+
+						}else{ // verifico se existe anexo e mostro somente icone de anexo para download
+
+						}
+?>						<!--<input type="file" class="form-control" name="arquivo">-->
 					</div>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 			<div class="col-md-12">
 				<div class="col-md-12">
 					<div class="form-group">
-						<textarea class="form-control" name="descricao" placeholder="Insira aqui o conteúdo" style="min-height: 250px;"><?php echo $value_corpo_material; ?></textarea>
+						<textarea class="form-control" name="descricao" placeholder="Insira aqui o conteúdo" style="min-height: 250px;" required="required"><?php echo $value_corpo_material; ?></textarea>
 					</div>
 				</div>
 			</div>

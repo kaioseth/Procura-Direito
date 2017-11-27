@@ -24,10 +24,9 @@
 			$titulo_cabecalho = "Cadastrar novo material";
 
 			if( isset($_GET['id']) ){
+
 				$sql = "SELECT * FROM materiais WHERE id = ".$_GET['id'];
 				$row = mysqli_fetch_assoc( mysqli_query( $conexao,$sql ) );
-
-				$titulo_cabecalho 		= "Material: ".$row['titulo'];
 
 				$status_material 		= $row['status'];
 				$value_titulo_material 	= $row['titulo'];
@@ -38,11 +37,23 @@
 				$id_dono_material		= $row['id_usuario'];
 				$data_postagem_material	= $row['data_cadastro'];
 
-				if( $row['id_usuario'] === $_SESSION['id_usuario'] ){ // é o dono do material
-					$arquivo_include = 'form.php';
+				$titulo_cabecalho 		= "Complementar material: ".$value_titulo_material;
+
+				if( isset($_GET['acao']) ){
+					$arquivo_include = 'complementar.php';
 				}else{
-					// se sessão id_usuario != de vazia, coloco link pra complementar material
-					$arquivo_include = 'view.php';
+					$titulo_cabecalho 		= "Material: ".$row['titulo'];
+
+					if( isset($_SESSION['id_usuario']) ){
+						if( $row['id_usuario'] === $_SESSION['id_usuario'] ){ // é o dono do material
+							$arquivo_include = 'form.php';
+						}else{
+							// se sessão id_usuario != de vazia, coloco link pra complementar material
+							$arquivo_include = 'view.php';
+						}
+					}else{
+						$arquivo_include = 'view.php';
+					}
 				}
 			}else{ // ta entrando em form para adicionar novo
 				if( isset($_SESSION['usuario_logado']) ){

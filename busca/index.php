@@ -7,6 +7,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="<?php echo $path_css ?>padrao.css">
 		<link rel="stylesheet" href="<?php echo $path_css ?>bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $path_css ?>font-awesome.min.css">
 		<link rel="shortcut icon" type="image/png" href="<?php echo $path_midia ?>favicon.png"/>
 	</head>
 	<body>
@@ -71,7 +72,7 @@
 					<div class="col-md-8" align="left" style="margin-top: 1%; margin-left: 2%;">
 						<h4><?php echo $titulo; ?></h4>	
 					</div>
-					<div class="col-md-3" align="right" style="margin-top: 1%">
+					<div class="col-md-3" align="right" style="margin-top: 1%; float: right; margin-right: 2%">
 						<a href="<?php echo $path_raiz; ?>" style="cursor: pointer;">
 							<button class="btn btn-secondary">Nova busca</button>
 						</a>
