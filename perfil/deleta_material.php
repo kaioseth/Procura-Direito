@@ -8,7 +8,7 @@
 
 	$id = $_POST['id'];
 
-	$sql_deleta_complementos = "DELETE FROM materiais_complementos WHERE id_material = ".$id;
+	$sql_deleta_complementos = "DELETE FROM materiais_alteracao WHERE id_material = ".$id;
 	if( mysqli_query( $conexao,$sql_deleta_complementos ) ){
 		$sql_deleta_material = "DELETE FROM materiais WHERE id = ".$id;
 		if( mysqli_query( $conexao,$sql_deleta_material ) ){

@@ -23,7 +23,7 @@
 
 			$titulo_cabecalho = "Cadastrar novo material";
 
-			if( $_GET['id'] != '' ){
+			if( isset($_GET['id']) ){
 				$sql = "SELECT * FROM materiais WHERE id = ".$_GET['id'];
 				$row = mysqli_fetch_assoc( mysqli_query( $conexao,$sql ) );
 

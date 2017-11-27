@@ -16,37 +16,48 @@
 		$instance 	= new db();
 		$conexao 	= $instance->conecta_mysql();
 
-		$id_material		= $_POST['nome'];
-		$titulo 			= $_POST['email'];
-		$id_area 			= $_POST['telefone'];
-		$corpo 				= $_POST['senha'];
-		$status				= $_POST['confirma_senha'];
-		$id_dono_material	= $_POST['confirma_senha'];
-		$extensao_anexo		= $_POST['confirma_senha'];
+		$id_material		= $_POST['id_material'];
+		$titulo 			= $_POST['titulo'];
+		$id_area 			= $_POST['area_atuacao'];
+		$corpo 				= $_POST['descricao'];
+		$status				= $_POST['status'];
+		$id_dono_material	= $_POST['id_dono'];
+		$extensao_anexo		= $_POST['extensao_anexo'];
+		//$observacao			= $_POST['observacao'];
 
 		if( $id_material != '' ){
 			if( $id_dono_material === $_SESSION['id_usuario'] ){ // fazendo alteração no próprio material
-				$sql = "UPDATE usuarios 
-					    SET nome 		= '".$nome."',
-					     	email 		= '".$email."',
-						 	fone 		= '".$fone."'
-						 
-					 	WHERE id = ".$_SESSION['id_usuario'];
+				$sql = "UPDATE materiais 
+					    SET titulo 				= '".$titulo."',
+					     	id_material_area 	= '".$id_area."',
+						 	corpo 				= '".$corpo."',
+						 	status 				= '".$status."'
+					 	WHERE id = ".$id_material;
 			}else{ // cadastrando complemento de material existente
-				$sql = "UPDATE usuarios 
-					    SET nome 		= '".$nome."',
-					     	email 		= '".$email."',
-						 	fone 		= '".$fone."'
-						 
-					 	WHERE id = ".$_SESSION['id_usuario'];
+				$sql = "INSERT INTO materiais_alteracao ( id_usuario,
+														  id_material,
+														  observacao,
+														  alteracao_aprovada,
+														  novo_corpo )
+												 VALUES ( ".$_SESSION['id_usuario'].",
+												 		  ".$id_material.",
+												 		  '".$observacao."',
+												 		  'N',
+												 		  '".$corpo."' )";
 			}
 		}else{ // cadastrando novo material
-			$sql = "UPDATE usuarios 
-				    SET nome 		= '".$nome."',
-				     	email 		= '".$email."',
-					 	fone 		= '".$fone."'
-					 
-				 	WHERE id = ".$_SESSION['id_usuario'];
+			$sql = "INSERT INTO materiais ( id_usuario,
+											titulo,
+											corpo,
+											data_cadastro,
+											status,
+											id_material_area )
+								   VALUES ( ".$_SESSION['id_usuario'].",
+								   			'".$titulo."',
+								   			'".$corpo."',
+								   			CURRENT_DATE,
+								   			'".$status."',
+								   			".$id_area." )";
 		}
 		
 		if( mysqli_query( $conexao, $sql ) ){
@@ -63,5 +74,10 @@
 <?php
 		}
 ?>
+		<script type="text/javascript">
+			setTimeout(function(){
+				window.location.href='<?php echo $path_raiz; ?>';
+			},5000)
+		</script>
 	</body>
 </html>

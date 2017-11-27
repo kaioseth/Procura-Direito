@@ -44,7 +44,8 @@
 					<div class="col-md-8" style="margin-top: 10%;">
 						<h1>Procura Direito</h1>
 						<div style="width: 80%; float: left;">
-							<form>
+							<form name="form_buscar" id="form_buscar" enctype="multipart/form-data" method="GET" action="<?php echo $path_raiz; ?>busca/">
+								<input type="hidden" name="b" id="b" value="">
 								<div class="form-group">
 									<input type="text" class="form-control" id="input_search" placeholder="O que esta procurando?">
 								</div>
@@ -77,8 +78,19 @@
 
 	<script src="<?php echo $path_js ?>jquery.min.js"></script>
 	<script src="<?php echo $path_js ?>bootstrap.min.js"></script>
+	<input type="hidden" id="raiz_software" value="<?php echo $path_raiz; ?>">
 
 	<script>
+		// fazer chamar metodo busca_conteudo caso pressione o enter também
+		function busca_conteudo(){
+			var buscar = $('#input_search').val();
+			var path_busca = $('#raiz_software').val()+'busca/?b='+$('#input_search').val();
+			//$("#form_buscar").attr("action",path_busca);
+			$('#b').val(buscar);
+			console.log(path_busca);
+			setTimeout(function(){ $("#form_buscar").submit(); }, 2000);
+		}
+
 		$('#btn_buscar').click(function(){
 			if( $('#input_search').val() != '' ){
 				busca_conteudo();
@@ -92,24 +104,5 @@
 				}, 5000);
 			}
 		});
-
-		// fazer chamar metodo busca_conteudo caso pressione o enter também
-		function busca_conteudo(){
-			var buscar = $('#input_search').val();
-			$.ajax({
-				url: "",
-				crossDomain: true,
-				type: "POST",
-				data : {
-					titulo : buscar
-				},
-				success: function(resultado){
-		        	console.log("sucesso: "+resultado);
-			    },
-			    error: function(res){
-			    	console.log("erro: "+res);
-			    }
-			});
-		}
 	</script>
 </html>

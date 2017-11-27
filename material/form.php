@@ -1,6 +1,7 @@
-	<form style="margin-top: 1%;" enctype="multipart/form-data" action="salva_material.php" method="post">
+	<form style="margin-top: 1%;" enctype="multipart/form-data" action="atualiza_material.php" method="post">
 		<input type="hidden" name="id_material" value="<?php echo $id_material; ?>">
 		<input type="hidden" name="extensao_anexo" value="<?php echo $extensao; ?>">
+		<input type="hidden" name="id_dono" value="<?php echo $id_dono_material; ?>">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="col-md-6">
@@ -44,8 +45,8 @@
 								<span style="font-size: 16px;">
 									Status
 								</span>
-								<input type="radio" name="status" <?php if( $status_material == 'A' || $status_material == '' ){ echo 'checked="checked"'; } ?> value="a" style="margin-left: 2%;"> Ativo
-								<input type="radio" name="status"  <?php if( $status_material == 'I' ){ echo 'checked="checked"'; } ?> value="i"> Inativo
+								<input type="radio" name="status" <?php if( $status_material == 'a' || $status_material == '' ){ echo 'checked="checked"'; } ?> value="a" style="margin-left: 2%;"> Ativo
+								<input type="radio" name="status"  <?php if( $status_material == 'i' ){ echo 'checked="checked"'; } ?> value="i"> Inativo
 							</div>
 						</div>
 						<div class="col-md-6" align="center">
@@ -73,7 +74,7 @@
 
 		<div class="form-group" align="right" style="margin-top: 1%; margin-bottom: 1%;">
 			<p style="margin-right: 15px;">
-				<button id="btn_cadastrar" type="button" class="btn btn-primary btn-sm">Salvar</button> 
+				<button type="submit" class="btn btn-primary btn-sm">Salvar</button> 
 			</p>
 		</div>
 	</form>
