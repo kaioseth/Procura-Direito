@@ -35,14 +35,14 @@
 						<input type="button" id="btn_entrar" class="btn btn-primary" style="margin-top: 3%; width: 100%" value="Entrar">
 						<div class="col-md-12" style="margin-top: 3%;">
 							<div class="col-md-6" align="left" style="margin-top: -10px;">
-								<a style="margin-left: -40px;">
+								<!--<a style="margin-left: -40px;">
 									<img src="<?php echo $path_midia ?>fb_2_logo.png" width="48">
 								</a>
 								<a>
 									<img src="<?php echo $path_midia ?>g_logo.png" width="30">
-								</a>
+								</a>-->
 							</div>
-							<div class="col-md-6" align="right" style="margin-top: 5px">
+							<div class="col-md-6" align="right" style="margin-top: 5px; margin-left: 11%;">
 								<a href="<?php echo $path_raiz.'cadastro/'; ?>" style="margin-right: -26px;"><span>Não possuo cadastro</span></a><!-- enviar para pagina de cadastro -->
 							</div>
 						</div>					

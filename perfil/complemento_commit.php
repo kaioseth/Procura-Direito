@@ -6,6 +6,8 @@
 	$instance = new db();
 	$conexao = $instance->conecta_mysql();
 
+	include_once('../estrutura/auditoria.php');
+
 	$id = $_POST['id'];
 	$acao = $_POST['acao'];
 
@@ -17,6 +19,11 @@
 		if( $acao === 'A' ){
 			$sql_altera_corpo = "UPDATE materiais SET corpo = '".$row_aux['novo_corpo']."' WHERE id = ".$row_aux['id_material'];
 			if( mysqli_query( $conexao,$sql_altera_corpo ) ){
+				$acao_auditoria = 'comp alt';
+				$descricao_auditoria = 'alteracao de status de solicitacao de complemento id '.$id.' para '.$acao;
+
+				salva_auditoria($conexao,$_SESSION['id_usuario'],$acao_auditoria,$descricao_auditoria,null,null);
+
 				echo 1;
 			}else{
 				echo 2;
@@ -25,6 +32,6 @@
 			echo 1;
 		}
 	}else{
-		echo $sql_update_complementos;
+		echo 0;
 	}
 ?>

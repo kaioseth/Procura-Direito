@@ -16,6 +16,8 @@
 		$instance 	= new db();
 		$conexao 	= $instance->conecta_mysql();
 
+		include_once('../estrutura/auditoria.php');
+
 		$id_material = $_POST['id_material'];
 		
 		if( isset($_POST['titulo']) ){ $titulo = $_POST['titulo']; }
@@ -32,6 +34,8 @@
 
 		if( isset($_POST['observacao']) ){ $observacao = $_POST['observacao']; }
 
+		$novo_material = false;
+
 		if( $id_material != '' ){
 			if( $id_dono_material === $_SESSION['id_usuario'] ){ // fazendo alteração no próprio material
 				$sql = "UPDATE materiais 
@@ -40,6 +44,8 @@
 						 	corpo 				= '".$corpo."',
 						 	status 				= '".$status."'
 					 	WHERE id = ".$id_material;
+
+				$acao_auditoria = 'mat alt';
 			}else{ // cadastrando complemento de material existente
 				$sql = "INSERT INTO materiais_alteracao ( id_usuario,
 														  id_material,
@@ -53,6 +59,8 @@
 												 		  'P',
 												 		  '".$corpo."',
 												 		  CURRENT_DATE )";
+
+				$acao_auditoria = 'mat comp';
 			}
 		}else{ // cadastrando novo material
 			$sql = "INSERT INTO materiais ( id_usuario,
@@ -67,11 +75,22 @@
 								   			CURRENT_DATE,
 								   			'".$status."',
 								   			".$id_area." )";
+
+			$novo_material = true;
+
+			$acao_auditoria = 'mat ins';
 		}
 	
-		//echo $sql;
-
 		if( mysqli_query( $conexao, $sql ) ){
+			if( $novo_material ){
+				$sql_max = "SELECT MAX(id) AS ultimo FROM materiais";
+				$row_max = mysqli_fetch_assoc( mysqli_query( $conexao,$sql_max ) );
+				$id_material = $row_max['ultimo'];
+			}
+
+			$descricao_auditoria = 'arquivo atualiza_material';
+
+			salva_auditoria($conexao,$_SESSION['id_usuario'],$acao_auditoria,$descricao_auditoria,$corpo,$id_material);
 ?>
 			<div class="col-md-12 alert alert-success" style="text-align: center; margin-top: 20%">
 				<strong>Dados armazenados com sucesso!</strong>

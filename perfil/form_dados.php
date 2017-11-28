@@ -43,7 +43,7 @@
 
 	<div class="form-group">
 		<label for="foto" style="float: left;">Foto de perfil</label>
-		<input type="file" class="form-control" name="foto" id="foto" value="">
+		<input type="file" class="form-control" name="arquivo" id="arquivo" value="">
 		
 	</div>
 
@@ -62,8 +62,21 @@
 	});
 
 	$('#cancelar').click(function(){
-			$('#volatil').hide('slow');
-			$('#volatil').html('');
-			$('#btns_perfil').show('slow');
-		});
+		$('#volatil').hide('slow');
+		$('#volatil').html('');
+		$('#btns_perfil').show('slow');
+	});
+
+	$('#arquivo').change(function(){
+		var value = $(this).val();
+       	var values = value.split('.'); 
+       	if (values.length > 0){
+           	//pega o ultimo elemento do array que é a extensão
+           	var extensao = values[values.length - 1];
+           	if( extensao != 'jpg' && extensao != 'JPG' ){
+           		$(this).val('');
+           		alert('Extensão inválida, por favor, selecione uma foto JPG');
+           	}
+       	}
+	});
 </script>

@@ -30,8 +30,8 @@
 	</div>
 </div>
 
-<button type="button" class="btn btn-success"  onclick="atualiza_complemento('S');">Aprovar</button>
-<button type="button" class="btn btn-warning"  onclick="atualiza_complemento('N');">Reprovar</button>
+<button type="button" class="btn btn-success"  onclick="atualiza_complemento('A');">Aprovar</button>
+<button type="button" class="btn btn-warning"  onclick="atualiza_complemento('R');">Reprovar</button>
 <button type="button" class="btn btn-danger"  onclick="abrir('complementos.php');">Voltar</button>
 
 <script src="<?php echo $path_js ?>jquery.min.js"></script>
@@ -47,9 +47,10 @@
 				acao : acao,
 			},
 			success: function(resultado){
+				//console.log('result: '+resultado);
 				if( resultado == 1 ){
 					alert('Sucesso!');
-					location.reload();
+					//location.reload();
 				}else{
 					console.log("Erro: "+resultado);	
 				}

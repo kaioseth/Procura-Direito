@@ -82,7 +82,7 @@
 			<div class="row" align="center">
 				<div class="col-md-11 center-block" style="float: none;">
 					<table class="table table-striped table-bordered">
-						<thead>
+						<thead id="head_table">
 							<tr>
 <?php
 								if( $nome_dono != '' ){
@@ -100,8 +100,11 @@
 						</thead>
 						<tbody>
 <?php
+							$vazio = true;
+
 							$res_materiais = mysqli_query( $conexao,$sql_materiais );
 							while( $row_materiais = mysqli_fetch_assoc( $res_materiais ) ){
+								$vazio = false;
 ?>
 								<tr>
 <?php
@@ -142,6 +145,16 @@
 									}
 ?>
 								</tr>
+<?php
+							}
+							if( $vazio ){
+?>
+								<div class="col-md-12 alert alert-info" style="text-align: center; margin-top: 15%">
+									<strong>Nenhum resultado encontrado!</strong> Clique <a href="<?php echo $path_raiz; ?>">aqui</a> para realizar uma nova busca
+								</div>
+								<script>
+									$('#head_table').hide();
+								</script>
 <?php
 							}
 ?>							

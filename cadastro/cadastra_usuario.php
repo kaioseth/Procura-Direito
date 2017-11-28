@@ -5,6 +5,8 @@
 	$instance = new db();
 	$conexao = $instance->conecta_mysql();
 
+	include_once('../estrutura/auditoria.php');
+
 	$nome 		= $_POST['nome'];
 	$telefone 	= $_POST['telefone'];
 	$email 		= $_POST['email'];
@@ -39,7 +41,19 @@
 			$_SESSION['id_usuario'] 	= $row_max['ultimo'];
 			$_SESSION['nome_usuario']	= $nome[0].' '.$nome[count($nome)-1];
 
-			echo 1;
+			$imagem_usuario = $path_midia.'perfil/'.$_SESSION['id_usuario'].'.jpg';
+			if(!file_exists($imagem_usuario)){ // entra nesse if caso não exista a imagem
+				$imagem_usuario = $path_midia.'perfil/avatar.png';
+			}
+
+			$_SESSION['foto_usuario']	= $imagem_usuario;
+
+			$acao_auditoria = 'usu ins';
+			$descricao_auditoria = 'Cadastro de novo usuario com nome '.$_SESSION['nome_usuario'].' e fone '.$telefone;
+
+			salva_auditoria($conexao,$_SESSION['id_usuario'],$acao_auditoria,$descricao_auditoria,null,null);
+
+			echo 1;			
 		}else{
 			echo 0;
 		}
