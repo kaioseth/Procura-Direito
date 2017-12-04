@@ -36,7 +36,7 @@
 
 							$sql_qtd_complementos = "SELECT COUNT(id) AS quantidade
 													 FROM materiais_alteracao 
-													 WHERE id_material = ".$id_material." AND alteracao_aprovada ='S'";
+													 WHERE id_material = ".$id_material." AND alteracao_aprovada ='A'";
 							$row_qtd_complementos = mysqli_fetch_assoc( mysqli_query( $conexao,$sql_qtd_complementos ) );
 
 							$label = ' alteração';

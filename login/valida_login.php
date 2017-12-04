@@ -20,8 +20,9 @@
 			$_SESSION['usuario_administrador'] = true;
 		}
 
+		$valida_imagem_usuario = '../estrutura/midia/perfil/'.$row['id'].'.jpg';
 		$imagem_usuario = $path_midia.'perfil/'.$row['id'].'.jpg';
-		if(!file_exists($imagem_usuario)){ // entra nesse if caso não exista a imagem
+		if(!file_exists($valida_imagem_usuario)){ // entra nesse if caso não exista a imagem
 			$imagem_usuario = $path_midia.'perfil/avatar.png';
 		}
 
